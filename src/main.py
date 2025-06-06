@@ -1,8 +1,10 @@
 import sys
-
+from pathlib import Path
+import csv
 
 from ui.main_ui import Ui_EmailSlicer
 import sql.manage_SQL
+import qol.load_from_file
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
@@ -21,6 +23,84 @@ class EmailSlicerApp(Ui_EmailSlicer):
         self.slice_button.clicked.connect(self.get_input)
         self.save_db_button.clicked.connect(self.save_to_db)
         self.load_db_button.clicked.connect(self.get_database_info)
+        self.load_file_button.clicked.connect(self.load_file_data)
+        self.save_temp_file_button.clicked.connect(self.save_temp_data)
+        self.save_db_file_button.clicked.connect(self.save_db_data)
+
+    def load_file_data(self):
+        file_path, ok1 = QInputDialog.getText(
+            self.widget,
+            'File Path',
+            'Enter absolute file path:'
+        )
+        
+        if not ok1 or not file_path.strip():
+            return None
+        
+        file_path = file_path.strip('"')
+        file_path = Path(file_path.replace("\\", '/')).resolve()
+        
+        usernames, domains, extensions = qol.load_from_file.load_data(file_path)
+        for i in range(0, len(usernames)):
+            self.insert_to_temp_table([usernames[i], domains[i], extensions[i]])  
+
+    def save_temp_data(self):
+        data = []
+        table = self.email_temp_table
+
+        for row in range(table.rowCount()):
+            u_i = table.item(row, 0).text()
+            d_i = table.item(row, 1).text()
+            e_i = table.item(row, 2).text()
+            data.append([u_i, d_i, e_i])
+        
+        data.reverse()
+
+        parent_directory, ok1 = QInputDialog.getText(
+            self.widget,
+            'Directory',
+            'Enter directory to save output data in: '
+        )
+
+        if not ok1 or not parent_directory.strip():
+            return None
+        
+        parent_directory = parent_directory.strip('"')
+        parent_directory = Path(parent_directory.replace("\\", '/')).resolve()
+
+        with open(f'{str(parent_directory)}/output_temp_data.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['username', 'domain', 'extension'])
+            writer.writerows(data)
+
+    def save_db_data(self):
+        data = []
+        table = self.database_email_table
+
+        for row in range(table.rowCount()):
+            u_i = table.item(row, 0).text()
+            d_i = table.item(row, 1).text()
+            e_i = table.item(row, 2).text()
+            data.append([u_i, d_i, e_i])
+        
+        data.reverse()
+
+        parent_directory, ok1 = QInputDialog.getText(
+            self.widget,
+            'Directory',
+            'Enter directory to save output data in: '
+        )
+
+        if not ok1 or not parent_directory.strip():
+            return None
+        
+        parent_directory = parent_directory.strip('"')
+        parent_directory = Path(parent_directory.replace("\\", '/')).resolve()
+
+        with open(f'{str(parent_directory)}/output_db_data.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['username', 'domain', 'extension'])
+            writer.writerows(data)
 
     def save_to_db(self):
         self.get_temp_data()

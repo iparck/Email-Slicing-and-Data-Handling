@@ -1,0 +1,27 @@
+[
+    {
+        "username": "john.doe",
+        "domain": "gmail",
+        "extension": "com"
+    },
+    {
+        "username": "jane_smith",
+        "domain": "outlook",
+        "extension": "com"
+    },
+    {
+        "username": "user123",
+        "domain": "yahoo",
+        "extension": "co.uk"
+    },
+    {
+        "username": "admin",
+        "domain": "mydomain",
+        "extension": "org"
+    },
+    {
+        "username": "contact",
+        "domain": "company",
+        "extension": "net"
+    }
+]

@@ -1,7 +1,11 @@
 # Email-Slicing-and-Data-Handling
 A school summer holiday homework
-Created basic UI and linked some buttons and tables
+
+Updates ->
+1. Added ability to load data from files - txt, csv, json. csv and json are meant for emails splitted beforehand whereas txt for unsplitted emails
+2. Added ability to save the temp splitted emails and emails from database to a CSV file - planning to add support for json too
+3. Removed Bulk Upload button (I now realize there is a difference between bulk upload and load from file, but im just going to ignore it)
 
 Next ->
-1. Bulk Upload (I now realize, what even is the difference between Load From File and Bulk Upload), need to remove one of em buttons
-2. Split the Save to File button to 2 buttons (Save DB data to file), (Save temp email data to file)
+1. Apply error handling in the code (it is bad rn tbh)
+2. add the search db by username feature
