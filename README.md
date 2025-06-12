@@ -2,6 +2,8 @@
 A python GUI Application to slice email addresses into `username`, `domain`, `extension` easily and save them to a desired format.
 (UI was built using **Qt Designer**)
 
+**To run the program, run `main.py` in `/src`**
+
 ## Features
 - Slice emails into components : `username`, `domain`, `extension`
 - Import emails from :
