@@ -8,8 +8,6 @@ mycursor = None
 DATABASE = None
 TABLE = None
 
-
-
 def taking_creds(host, user, password):
     global HOST, USER, PASSWORD
     
