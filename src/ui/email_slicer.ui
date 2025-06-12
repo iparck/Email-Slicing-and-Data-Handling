@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EmailSlicer</class>
+ <widget class="QWidget" name="EmailSlicer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1008</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Email Slicer &amp; Data Handling</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5,4">
+   <item>
+    <layout class="QVBoxLayout" name="Left_Main">
+     <item>
+      <widget class="QLabel" name="titleLabel">
+       <property name="font">
+        <font>
+         <family>Tw Cen MT</family>
+         <pointsize>26</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Email Slicer &amp; Data Handler</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignHCenter|Qt::AlignTop</set>
+       </property>
+       <property name="margin">
+        <number>10</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="inputGroup">
+       <property name="title">
+        <string>Input Section</string>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="emailLabel">
+          <property name="text">
+           <string>Email Address:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="email_input">
+          <property name="placeholderText">
+           <string>Enter email address</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="actionGroup">
+       <property name="title">
+        <string>Actions</string>
+       </property>
+       <layout class="QGridLayout" name="buttonLayout">
+        <item row="1" column="2">
+         <widget class="QPushButton" name="save_db_button">
+          <property name="text">
+           <string>Save to Database</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="save_temp_file_button">
+          <property name="text">
+           <string>Save temp data to file</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QPushButton" name="slice_button">
+          <property name="text">
+           <string>Slice Email</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="3">
+         <widget class="QPushButton" name="search_user_button">
+          <property name="text">
+           <string>Search Database By Username</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="load_db_button">
+          <property name="text">
+           <string>Load from Database</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="save_db_file_button">
+          <property name="text">
+           <string>Save DB data to file</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="load_file_button">
+          <property name="text">
+           <string>Load from File</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="tableGroup">
+       <property name="title">
+        <string>Sliced Emails (temporary)</string>
+       </property>
+       <layout class="QVBoxLayout" name="tableLayout">
+        <item>
+         <widget class="QTableWidget" name="email_temp_table">
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <property name="columnCount">
+           <number>3</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>Username</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Domain</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Extension</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="Right_Main">
+     <item>
+      <widget class="QGroupBox" name="databaseGroup">
+       <property name="title">
+        <string>Database</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
+        <item>
+         <widget class="QTableWidget" name="database_email_table">
+          <column>
+           <property name="text">
+            <string>Username</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Domain</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Extension</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

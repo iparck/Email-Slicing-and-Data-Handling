@@ -1,28 +1,47 @@
-import mysql
 import mysql.connector
 
-HOST = input("Enter host name - ")
-USER = input("Enter user name - ")
-PASSWORD = input("Enter your SQL password - ")
-
-db = mysql.connector.connect(
-    host=HOST,
-    user=USER,
-    password=PASSWORD
-)
-
-mycursor = db.cursor()
-
+HOST = None
+USER = None
+PASSWORD = None
+db = None
+mycursor = None
 DATABASE = None
 TABLE = None
 
-def setup(database, table):
 
+
+def taking_creds(host, user, password):
+    global HOST, USER, PASSWORD
+    
+    HOST = host
+    USER = user
+    PASSWORD = password
+    
+    try:
+        test_db = mysql.connector.connect(
+            host=HOST,
+            user=USER,
+            password=PASSWORD
+        )
+    except Exception as e:
+        return str(e)
+    test_db.close()
+    return True
+
+def setup(database, table):
+    global HOST, USER, PASSWORD
     global DATABASE, TABLE, mycursor, db
 
     DATABASE = database
     TABLE = table
 
+    db = mysql.connector.connect(
+        host=HOST,
+        user=USER,
+        password=PASSWORD
+    )
+
+    mycursor = db.cursor()
 
     mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {database};")
     db.close()
@@ -38,7 +57,7 @@ def setup(database, table):
 
     mycursor.execute(
         f"""
-            CREATE TABLE IF NOT EXISTS {table} (
+            CREATE TABLE IF NOT EXISTS {TABLE} (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(100),
                 domain VARCHAR(100),
