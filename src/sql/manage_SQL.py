@@ -61,7 +61,7 @@ def setup(database, table):
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(100),
                 domain VARCHAR(100),
-                extention VARCHAR(100)
+                extension VARCHAR(100)
             )
         """
     )
@@ -80,7 +80,7 @@ def commit_to_db(username_list, domain_list, extension_list):
         domain = domain_list[i]
         extension = extension_list[i]
 
-        sql = f"INSERT INTO {TABLE} (username, domain, extention) VALUES (%s, %s, %s)"
+        sql = f"INSERT INTO {TABLE} (username, domain, extension) VALUES (%s, %s, %s)"
         values = (username, domain, extension)
         mycursor.execute(sql, values)
     
