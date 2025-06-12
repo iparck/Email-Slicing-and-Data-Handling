@@ -28,6 +28,7 @@ With the program, you can store and retrieve data using a MySQL Database.
 - Database System - `MySQL`
 - Default Database Name - `emailSlicing` (changeable)
 - Table Schema - (created if does not exist)
+
 ![table schema](readme/{F2D831B2-ED7D-4E64-BB3D-CBF01AA5EBB7}.png)
 
 ## Required libraries
@@ -51,10 +52,12 @@ whereas TXT is meant for importing email data to be splitted
 Imported txt data must contain emails seperated by end line character
 ### JSON
 ![format](readme/{50016D1E-0C54-40CD-BAE4-C7F0E9D244ED}.png)
+
 Imported json data must be an array of objects with the keys `username`, `domain`, `extension`
 Output json data will be in the same format as in attached image
 ### CSV
 ![format](readme/{86361C79-3A77-4E55-98B0-1B74CDCAAA0D}.png)
+
 Imported csv data must be composed of a header row with columns `username`, `domain`, `extension`
 Output csv data will be in the same format as in attached image
 
